@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Restaurant {
+  constructor() {
+    this.menu = {};
+    this.ratings = [];
+  }
+
+  // Method to add an item to the menu
+  addItem(name, price) {
+    if (!this.menu[name]) {
+      this.menu[name] = price;
+      console.log(`${name} has been added to the menu.`);
+    } else {
+      console.log(`${name} is already on the menu.`);
+    }
+  }
+
+  // Method to remove an item from the menu
+  removeItem(name) {
+    if (this.menu[name]) {
+      delete this.menu[name];
+      console.log(`${name} has been removed from the menu.`);
+    } else {
+      console.log(`${name} is not on the menu.`);
+    }
+  }
+
+  // Method to add a rating
+  addRating(rating) {
+    this.ratings.push(rating);
+    console.log(`Rating ${rating} has been added.`);
+  }
+
+  // Method to calculate the average rating
+  calculateAverageRating() {
+    if (this.ratings.length === 0) {
+      return "No ratings yet.";
+    }
+    let sum = this.ratings.reduce((total, rating) => total + rating, 0);
+    return (sum / this.ratings.length).toFixed(1);
+  }
+
+  // Method to display the menu
+  displayMenu() {
+    console.log("Menu:");
+    for (let item in this.menu) {
+      console.log(`${item}: $${this.menu[item]}`);
+    }
+  }
+}
+
+// Example usage
+let restaurant = new Restaurant();
+
+// Adding items to the menu
+restaurant.addItem("Pizza", 10.99);
+restaurant.addItem("Burger", 8.99);
+restaurant.addItem("Pasta", 12.99);
+
+// Displaying the menu
+restaurant.displayMenu();
+
+// Adding ratings
+restaurant.addRating(4.5);
+restaurant.addRating(3.8);
+restaurant.addRating(4.2);
+
+// Calculating and displaying the average rating
+console.log("Average rating:", restaurant.calculateAverageRating());
+
+// Removing an item from the menu
+restaurant.removeItem("Burger");
+
+// Displaying the updated menu
+restaurant.displayMenu();
+
+    </script>
+</body>
+</html>

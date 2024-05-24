@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+class Table {
+  constructor(number) {
+    this.number = number;
+  }
+
+  printTable() {
+    let multiple = 1;
+    console.log(`Multiplication Table of ${this.number}:`);
+    do {
+      console.log(`${this.number} * ${multiple} = ${this.number * multiple}`);
+      multiple++;
+    } while (multiple <= 10);
+  }
+}
+
+let number = parseInt(prompt("Enter a number for multiplication table:"));
+let table = new Table(number);
+table.printTable();
+
+    </script>
+</body>
+
+</html>

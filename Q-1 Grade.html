@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       class Marks{
+  constructor(name,Physics, Chemistry, Biology, Mathematics, Computer) {
+    this.name=name;
+    this.subjects={
+    Physics,
+    Biology, 
+    Mathematics, 
+    Computer ,
+};
+  }
+
+  calculatePercentage() {
+    let totalMarks = Object.values(this.subjects).reduce((total,currentValues)=>total+currentValues);
+    let percentage = (totalMarks / 500) * 100;
+    return percentage;
+  }
+
+  getGrade() {
+    let percentage = this.calculatePercentage();
+
+    if (percentage >= 90) {
+      return  'A';
+    } else if (percentage >= 80) {
+     return  'B';
+    } else if (percentage >= 70) {
+     return 'C';
+    } else if (percentage >= 60) {
+      return  'D';
+    } else if (percentage >= 50) {
+     return 'E';
+    } else {
+      return'F';
+    }
+  }
+  displayResult(){
+    console.log(`student name:${this.name}`);
+    console.log(`marks`);
+
+    for (let subject in this.subjects){
+        console.log(`${subject}:${this.subjects[subject]}`);
+    }
+    console.log(`Total Marks:${Object.values(this.subjects).reduce((total,currentValues)=>total+currentValues)}`);
+    console.log(`Percentage:${this.calculatePercentage().toFixed(2)}%`);
+    console.log(`Grade: ${this.getGrade()}`);
+    console.log(`\n`);
+
+  }
+}
+let shizan = new Marks("shizan",89,78,99,90,88);
+shizan.calculatePercentage();
+shizan.getGrade();
+shizan.displayResult();
+
+
+
+
+
+
+    </script>
+</body>
+</html>
